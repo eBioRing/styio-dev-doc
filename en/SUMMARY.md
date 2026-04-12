@@ -1,50 +1,56 @@
 # Table of contents
 
-* [Overview](README.md)
+* [首页](README.md)
 
-## Unka's Diary
+## 生态与工具
 
-* [2024-2025](unkas-diary/2024-2025.md)
+* [仓库矩阵与来源优先级](ecosystem/repository-matrix.md)
+* [Styio 本体开发流程](ecosystem/styio-core-workflow.md)
+* [styio-spio 开发指引](ecosystem/styio-spio-development.md)
+* [styio-spio 当前能力与边界](ecosystem/styio-spio-surface.md)
+* [styio-view 开发指引](ecosystem/styio-view-development.md)
+* [Extensions 开发指引](ecosystem/extensions-development.md)
 
-## Dev Env
+## 规范
 
-* [Introduction](dev-env/introduction.md)
-* [Preparation](dev-env/preparation/README.md)
-  * [Windows](dev-env/preparation/windows.md)
-  * [Linux](dev-env/preparation/linux.md)
-  * [MacOS](dev-env/preparation/macos.md)
-* [LLVM](dev-env/llvm.md)
-* [Docker](dev-env/docker.md)
-  * [Pull Image](dev-env/docker/pull-image.md)
-  * [Create Container](dev-env/docker/create-container.md)
-  * [Versions](dev-env/docker/versions.md)
-  * [Others](dev-env/docker/others.md)
-* [Visual Studio Code](dev-env/visual-studio-code.md)
-* [MSVC](dev-env/msvc.md)
+* [贡献者契约](standards/contributor-contract.md)
+* [编码与重构规则](standards/coding-and-refactor-rules.md)
+* [测试与回归策略](standards/testing-and-regression.md)
+* [文档与 SSOT 规则](standards/documentation-and-ssot.md)
 
-## Rules
+## 工具链
 
-* [1. Pay only what you need.](rules/1.-pay-only-what-you-need..md)
+* [构建工具链](toolchain/build-toolchain.md)
+* [CLI 与调试工作流](toolchain/cli-and-debug-workflow.md)
 
-## Milestones
+## 架构
 
-* [Task Board](milestones/task-board.md)
-* [History](milestones/history.md)
-* [IF YOU DON'T KNOW WHAT TO DO](milestones/if-you-dont-know-what-to-do.md)
+* [分层架构与职责](architecture/layered-architecture.md)
+* [编译器流水线](architecture/compiler-pipeline.md)
+* [源码目录地图](architecture/source-tree.md)
 
-## Possible Optimizations
+## 接口
 
-* [Parse URLs](possible-optimizations/parse-urls.md)
+* [核心接口总览](interfaces/core-interfaces.md)
+* [Parser 手册](interfaces/parser-manual.md)
+* [Analyzer 手册](interfaces/analyzer-manual.md)
+* [CodeGen 手册](interfaces/codegen-manual.md)
+* [Runtime 手册](interfaces/runtime-manual.md)
+* [功能改动矩阵](interfaces/change-matrix.md)
 
-## Dark Magic
+## 维护任务
 
-* [Enable Hyper-V](dark-magic/enable-hyper-v.md)
+* [新 Token 或语法改动手册](runbooks/new-token-or-syntax.md)
+* [新 AST 或 IR 节点改动手册](runbooks/new-ast-or-ir.md)
+* [标准流与资源能力改动手册](runbooks/resources-and-stdio.md)
+* [新增 Intrinsic 改动手册](runbooks/new-intrinsic.md)
+* [State / Pulse / Snapshot 改动手册](runbooks/state-and-pulse.md)
+* [诊断与错误模型手册](runbooks/diagnostics-and-error-model.md)
+* [Parser Shadow 与双轨迁移手册](runbooks/parser-shadow-and-dual-track.md)
+* [测试金字塔与 Case 选型手册](runbooks/testing-pyramid-and-case-selection.md)
+* [CLI 与 Machine Interface 改动手册](runbooks/cli-and-machine-interface.md)
 
-## Thinking
+## 语言 SSOT
 
-* [Add A New AST](thinking/add-a-new-ast.md)
-* [Decisions](thinking/decisions.md)
-* [Questions](thinking/questions.md)
-* [Other Questions](thinking/other-questions.md)
-* [Value](thinking/value.md)
-* [Outcome](thinking/outcome.md)
+* [语言与设计 SSOT 地图](language/ssot-map.md)
+* [资源、`@` 与标准流](language/resources-and-stdio.md)
