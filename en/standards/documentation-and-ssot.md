@@ -43,6 +43,7 @@
 更具体的仓库边界和来源优先级，见：
 
 - [仓库矩阵与来源优先级](../ecosystem/repository-matrix.md)
+- [审计、许可证与依赖合规](audit-license-and-dependency-policy.md)
 
 ## 什么时候必须同步文档
 
@@ -53,6 +54,7 @@
 | 新 driver 接口变化 | `Resource-Driver` |
 | 文档结构变化 | `DOCUMENTATION-POLICY` 和相关索引 |
 | 外部依赖变化 | `THIRD-PARTY` |
+| 审计、许可证或商业风险策略变化 | `styio-audit` 模块 + 项目仓 `LICENSE-POLICY.md` / `DEPENDENCY-USAGE.md` / inventory 文档 |
 
 ## 对 GitBook 的要求
 

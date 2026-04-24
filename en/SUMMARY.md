@@ -5,6 +5,7 @@
 ## 生态与工具
 
 * [仓库矩阵与来源优先级](ecosystem/repository-matrix.md)
+* [三仓库协作流程](ecosystem/three-repository-collaboration.md)
 * [Styio 本体开发流程](ecosystem/styio-core-workflow.md)
 * [styio-spio 开发指引](ecosystem/styio-spio-development.md)
 * [styio-spio 当前能力与边界](ecosystem/styio-spio-surface.md)
@@ -17,6 +18,7 @@
 * [编码与重构规则](standards/coding-and-refactor-rules.md)
 * [测试与回归策略](standards/testing-and-regression.md)
 * [文档与 SSOT 规则](standards/documentation-and-ssot.md)
+* [审计、许可证与依赖合规](standards/audit-license-and-dependency-policy.md)
 
 ## 工具链
 

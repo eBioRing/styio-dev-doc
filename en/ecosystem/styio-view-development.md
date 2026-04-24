@@ -117,14 +117,45 @@
 
 如果 IDE 需要一个新能力，而当前 `styio` 没有稳定公共接口，正确动作是回主仓补接口，而不是在 `styio-view` 自己假设一份语义。
 
+## 语法新特性的 IDE 适配责任
+
+当 `styio` 主仓添加新 token、新关键字、新表达式、新语句、新资源语法或新的诊断形状时，`styio` 是上游，`styio-view` 是 IDE 消费方。
+
+`styio-view` 必须针对新语法检查这些面：
+
+1. 语法高亮和 token 分类。
+2. 补全、snippet、hover 和上下文提示。
+3. 诊断 range、错误文本呈现和 quick navigation。
+4. block / outline / runtime surface 是否能正确识别新结构。
+5. 编辑器测试和 Flutter 测试是否覆盖新语法样例。
+
+如果 `styio-view` 发现当前公共接口不足以实现高亮或补全，不允许在前端复制 parser 规则作为长期方案。正确流程是回到 `styio` 补充稳定的 token、range、diagnostic 或 repr 接口，再由 `styio-view` 消费。
+
+## 对 `styio` IDE 组件的需求上游责任
+
+`styio-view` 实现前端时，如果发现 `styio` 的基础 IDE 套件缺少必要能力，`styio-view` 是 `styio` IDE 维护组件的需求上游。这里的“上游”是需求上游，不是语言语义上游。
+
+典型触发条件：
+
+1. 高亮需要更细的 token 分类或 semantic token。
+2. 补全需要 parser / analyzer 暴露稳定 completion source。
+3. outline、breadcrumb 或 block navigation 需要稳定 block / symbol range。
+4. diagnostic navigation 需要更精确的 range、severity、code、subcode 或 fix hint。
+5. AI 面板需要可审计的 AST / IR / runtime event 摘要，而不是自由文本猜测。
+
+`styio-view` 需要给出产品场景、最小样例、期望 payload 和测试预期；`styio` 需要在 IDE / LSP / workspace / parser service 内补稳定公共接口。`styio-view` 不应把临时 workaround 固化成自己的语言分析实现。
+
 ## 维护原则
 
 - docs-first
 - spec / architecture / ADR 先于实现
 - 平台策略和模块生命周期必须先落文档
 - 语言真相始终回到 `styio`
+- 语法高亮和补全跟随 `styio`，不得反向定义语言规则
+- 前端 IDE 缺口可以上行驱动 `styio` IDE 组件，但不能反向改写语言语义
 
 ## 继续阅读
 
 - [仓库矩阵与来源优先级](repository-matrix.md)
+- [三仓库协作流程](three-repository-collaboration.md)
 - [Styio 本体开发流程](styio-core-workflow.md)

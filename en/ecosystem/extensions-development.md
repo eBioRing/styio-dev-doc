@@ -43,7 +43,7 @@ Extension 应当优先消费：
 - `styio --error-format jsonl`
 - `styio --machine-info=json`
 - 稳定的文件输入 / 输出行为
-- 已发布的 `spio` CLI 或 machine contract
+- 已发布的 `spio` CLI 或 `styio-protocol`
 
 不要依赖：
 

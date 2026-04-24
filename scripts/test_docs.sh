@@ -41,9 +41,9 @@ if [[ "$WITH_BROWSER" -eq 1 ]]; then
   test -f en/_book/interfaces/core-interfaces.html
   test -f en/_book/standards/testing-and-regression.html
 
-  rg -q "Styio 维护者手册" en/_book/index.html
-  rg -q "核心接口总览" en/_book/interfaces/core-interfaces.html
-  rg -q "测试与回归策略" en/_book/standards/testing-and-regression.html
+  grep -q "Styio 维护者手册" en/_book/index.html
+  grep -q "核心接口总览" en/_book/interfaces/core-interfaces.html
+  grep -q "测试与回归策略" en/_book/standards/testing-and-regression.html
 
   npx --yes playwright screenshot --browser=chromium "http://127.0.0.1:${PORT}" "$ARTIFACT_DIR/home.png"
 

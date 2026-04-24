@@ -27,7 +27,7 @@
 - registry consume / publish
 - project workflow 命令
 - managed local `styio` tool lifecycle
-- machine contract 消费
+- `styio-protocol` 消费
 - compile-plan 生成、schema 和兼容矩阵
 
 不负责：
@@ -57,7 +57,7 @@
 - 不能链接 `styio` 私有实现库
 - 不能包含 `styio` 私有头文件
 - 不能自己维护一份 Styio grammar fork
-- 只能通过机器握手和公开 contract 跟 `styio` 交互
+- 只能通过机器握手和公开 `styio-protocol` 跟 `styio` 交互
 - 兼容性必须通过 `styio --machine-info=json` 和 `contracts/compat/styio-support.toml` 判定
 
 这意味着 `spio` 和 `styio` 的关系默认是：
@@ -67,6 +67,20 @@
 - **契约驱动**
 
 不是源码级耦合。
+
+## `styio-protocol` 是什么
+
+`styio-protocol` 是 `spio` 消费 `styio` 的静态协议边界，不是运行时套件，也不是可链接的 `styio` 服务模块。
+
+它至少包括：
+
+- `styio --machine-info=json` 能力握手
+- 已发布的 `styio --compile-plan <path>` contract
+- JSON / JSONL diagnostics 和公开退出码
+- compiler version、channel、compat matrix 和迁移窗口
+- `spio` 需要验证的 schema、样例和 contract tests
+
+只要需求越过进程边界，就先判断它是不是 `styio-protocol` 变更。是协议变更时，由 `styio` 冻结生产者事实，`styio-spio` 只负责消费、校验和兼容策略；不是协议变更时，不要把 `styio` 内部实现拿进 `spio`。
 
 ## 代码树怎么读
 
@@ -161,16 +175,37 @@
 `styio-spio` 只能消费这些公开边界：
 
 - `styio --machine-info=json`
-- 已发布的 compile-plan contract
+- 已发布的 `styio-protocol` compile-plan contract
 - 兼容矩阵声明
 
 如果你发现一个 `spio` 需求只能通过读取 `styio/src` 或 `styio/tests` 才能实现，正确动作不是加耦合，而是回到 `styio` 主仓补公共接口。
 
+## `styio` 新版本发布后的跟进责任
+
+当 `styio` 发布新版本时，`styio` 是上游，`styio-spio` 是版本托管和包生态消费方。`styio-spio` 不能自定义编译器版本事实，但必须把新版本同步到自己的工具链和 registry 工作流。
+
+每次 `styio` 发版后，`styio-spio` 至少检查这些项：
+
+1. 版本托管仓库或 toolchain index 是否新增该 `styio` 版本。
+2. `spio tool install/use/pin` 是否能安装、选择和固定该版本。
+3. `contracts/compat/styio-support.toml` 或等价兼容矩阵是否更新。
+4. registry / publish / package metadata 是否引用正确的 compiler 版本范围。
+5. release feed、registry 通知、操作公告或推送消息是否发出。
+6. 破坏性变更是否有兼容窗口、迁移诊断和回滚路径。
+
+对应验证至少覆盖：
+
+1. `styio_contract_compat_gate`
+2. tool lifecycle tests
+3. registry / publish gates
+4. 受影响的 workflow dry-run 或 `styio-protocol` compile-plan contract tests
+
 ## 维护原则
 
 - `spio` 的权威边界在它自己的 `docs/governance/`
-- 和 `styio` 的集成必须通过 contract，不通过源码内省
+- 和 `styio` 的集成必须通过 `styio-protocol` contract，不通过源码内省
 - 新增行为先问“会不会破坏版本解耦”
+- `styio` 发版后，`spio` 必须跟进版本托管、兼容矩阵和生态通知
 
 ## 继续阅读
 

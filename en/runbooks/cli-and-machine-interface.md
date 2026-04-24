@@ -2,7 +2,7 @@
 
 这页针对的是 `src/main.cpp` 这条入口链，而不是一般的语言功能改动。
 
-如果你要改 CLI 参数、退出码、JSONL 诊断或 `--machine-info=json` 的握手内容，这页就是最小闭环。
+如果你要改 CLI 参数、退出码、JSONL 诊断或 `--machine-info=json` 的握手内容，这页就是最小闭环。被 `styio-spio`、`styio-view` 或扩展跨仓消费的部分统一归入 `styio-protocol`。
 
 ## 当前 CLI 契约
 
@@ -96,7 +96,7 @@ CLI 行为应该通过 `main.cpp` 配置和本地逻辑调整，而不是碰 ven
 - `"tool":"styio"`
 - `"compiler_version":"0.0.1"`
 - `"channel":"stable"`
-- `"supported_contracts":{"compile_plan":[]}`
+- `"supported_contracts":{"compile_plan":[1]}`
 - `"machine_info_json"`
 - `"single_file_entry"`
 - `"jsonl_diagnostics"`
@@ -104,11 +104,14 @@ CLI 行为应该通过 `main.cpp` 配置和本地逻辑调整，而不是碰 ven
 
 如果你改这些字段，必须有明确的兼容理由，并同步对应测试。
 
-当前公开边界还包括一条容易写错的事实：
+当前公开边界还包括两条容易写错的事实：
 
-- `supported_contracts.compile_plan` 仍然可以是空数组
+- full `styio` 当前应广告 `supported_contracts.compile_plan:[1]`
+- nano / 非 full profile 仍然不能假装拥有 compile-plan consumer
 
-也就是说，源码里拥有 compile-plan 相关定义，不等于已发布 machine handshake 宣称可执行 compile-plan。
+也就是说，compile-plan 是否可执行取决于 profile、machine-info 和消费仓兼容矩阵三者同时成立。
+
+`styio-protocol` 只描述这些稳定可消费的机器边界；它不是一个可以被工具仓链接的 `styio` 服务套件。
 
 ## 最小命令
 

@@ -2,6 +2,8 @@
 
 这页不讲抽象“愿景”，只记录 2026-04-12 这轮 GitHub 同步里，`styio-spio` 当前已经公开了什么、还没公开什么。
 
+本文把 `spio` 与 `styio` 之间的静态交接契约统一称为 `styio-protocol`。它是 CLI / machine-info / compile-plan / diagnostics / compat matrix 组成的公开协议，不是运行时套件。
+
 ## 本次核对基线
 
 当前远端公开状态：
@@ -74,6 +76,8 @@
 
 这意味着 `spio` 已经开始承担 **Styio 编译器本地安装、切换、项目级 pin** 的职责，不再只是 dependency resolver。
 
+当 `styio` 发布新版本时，这个职责会被触发：`spio` 需要更新版本托管仓库或 toolchain index，确保新版本可以被发现、安装、切换和 pin，并同步兼容矩阵、registry/publish 元数据和通知消息。
+
 ### 4. Compile-plan dry-run
 
 当前已公开：
@@ -86,22 +90,22 @@
 这里的关键边界是：
 
 - `spio` 已经公开 **plan generation**
-- 但还没有宣称 `styio` 已公开 **plan execution**
+- 并且通过 `styio-protocol` 宣称 compile-plan v1 已 live
 
-## 今天还没有公开完成的能力
+## 今天仍未公开完成的能力
 
 以下边界仍然不能写成“已经支持”：
 
-- `styio --compile-plan <path>` 的已发布 compiler-side consumer
-- `spio build/run/test` 的公开非 dry-run 编译执行闭环
 - auth / account / signatures / stronger trust policy
 - private security module
 - 更激进的多版本 resolver
+- compile-plan v1 之外的未来 schema / release matrix
 
 换句话说，当前正确说法是：
 
 - `spio` 已经有真实 package-manager core
-- 但完整 compiler-execution handoff 仍受 `styio` 公共接口发布状态约束
+- compile-plan v1 compiler-execution `styio-protocol` 已经 live
+- 更高版本协议和发布矩阵仍受 `styio` 公共接口发布状态约束
 
 ## 现在该看哪些目录
 
@@ -134,13 +138,14 @@
 - `spio_cli_gate`
 - `spio_extractability_gate`
 - `styio_spio_dual_maintenance_gate`
+- `styio_contract_compat_gate`
 
 ## 和 `styio` 的正确边界
 
 今天 `spio` 对 `styio` 的正确依赖仍然只有：
 
 - `styio --machine-info=json`
-- 将来已发布的 `styio --compile-plan <path>`
+- 已发布的 `styio --compile-plan <path>`
 - `contracts/compat/styio-support.toml`
 - published diagnostics / handshake fields
 
