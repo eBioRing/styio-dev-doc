@@ -1,84 +1,71 @@
 # Table of contents
 
-* [首页](README.md)
-
-## 全局协作与生态矩阵
-
-* [仓库矩阵与来源优先级](ecosystem/repository-matrix.md)
-* [三仓库协作指南](ecosystem/three-repository-collaboration.md)
-
-## styio (编译器与语言)
-
-* [Styio 本体协作指南](ecosystem/styio-core-workflow.md)
-* [构建工具链](toolchain/build-toolchain.md)
-* [CLI 与调试工作流](toolchain/cli-and-debug-workflow.md)
-
-## Spio (包管理与工作流)
-
-* [Spio 协作指南](ecosystem/spio-development.md)
-* [Spio 当前能力与边界](ecosystem/spio-surface.md)
-
-## Vityo (IDE 与交互)
-
-* [Vityo 协作指南](ecosystem/vityo-development.md)
-* [Extensions 协作指南](ecosystem/extensions-development.md)
-
-## styio-audit (审计与合规)
-
-* [styio-audit 协作指南](ecosystem/styio-audit-development.md)
-* [审计、许可证与依赖合规](standards/audit-license-and-dependency-policy.md)
-
-## styio-benchmark (性能与基准)
-
-* [styio-benchmark 协作指南](ecosystem/styio-benchmark-development.md)
-
-## styio-platform (平台与服务)
-
-* [styio-platform 协作指南](ecosystem/styio-platform-development.md)
-
-## styio-community (社区与治理)
-
-* [styio-community 社区指南](ecosystem/styio-community-development.md)
-
-## styio-dev-env (开发环境)
-
-* [styio-dev-env 用途说明](ecosystem/styio-dev-env-development.md)
-
-## 规范
-
-* [贡献者协作准则](standards/contributor-contract.md)
-* [编码与重构规则](standards/coding-and-refactor-rules.md)
-* [测试与回归策略](standards/testing-and-regression.md)
-* [文档与 SSOT 规则](standards/documentation-and-ssot.md)
-
-## 架构
-
-* [分层架构与职责](architecture/layered-architecture.md)
-* [编译器流水线](architecture/compiler-pipeline.md)
-* [源码目录地图](architecture/source-tree.md)
-
-## 接口
-
-* [核心接口总览](interfaces/core-interfaces.md)
-* [Parser 手册](interfaces/parser-manual.md)
-* [Analyzer 手册](interfaces/analyzer-manual.md)
-* [CodeGen 手册](interfaces/codegen-manual.md)
-* [Runtime 手册](interfaces/runtime-manual.md)
-* [功能改动矩阵](interfaces/change-matrix.md)
-
-## 维护任务
-
-* [新 Token 或语法改动手册](runbooks/new-token-or-syntax.md)
-* [新 AST 或 IR 节点改动手册](runbooks/new-ast-or-ir.md)
-* [标准流与资源能力改动手册](runbooks/resources-and-stdio.md)
-* [新增 Intrinsic 改动手册](runbooks/new-intrinsic.md)
-* [State / Pulse / Snapshot 改动手册](runbooks/state-and-pulse.md)
-* [诊断与错误模型手册](runbooks/diagnostics-and-error-model.md)
-* [Parser Shadow 与双轨迁移手册](runbooks/parser-shadow-and-dual-track.md)
-* [测试金字塔与 Case 选型手册](runbooks/testing-pyramid-and-case-selection.md)
-* [CLI 与 Machine Interface 改动手册](runbooks/cli-and-machine-interface.md)
-
-## 语言 SSOT
-
-* [语言与设计 SSOT 地图](language/ssot-map.md)
-* [资源、`@` 与标准流](language/resources-and-stdio.md)
+* [Styio Developer Manual / Styio 维护者手册](README.md)
+* [Project Instructions: styio-dev-doc](gemini.md)
+* [\_book](_book/README.md)
+  * [Project Instructions: styio-dev-doc](_book/gemini.md)
+  * [en](_book/en/README.md)
+    * [ecosystem](_book/en/ecosystem/README.md)
+      * [styio-community-development](_book/en/ecosystem/styio-community-development.md)
+      * [styio-core-workflow](_book/en/ecosystem/styio-core-workflow.md)
+    * [standards](_book/en/standards/README.md)
+      * [contributor-contract](_book/en/standards/contributor-contract.md)
+      * [documentation-and-ssot](_book/en/standards/documentation-and-ssot.md)
+* [Home](en/README.md)
+  * [Table of contents](en/summary.md)
+  * [ecosystem](en/ecosystem/README.md)
+    * [Repository Matrix](en/ecosystem/repository-matrix.md)
+    * [styio-community-development](en/ecosystem/styio-community-development.md)
+    * [styio-core-workflow](en/ecosystem/styio-core-workflow.md)
+    * [Three-Repository Collaboration Guide](en/ecosystem/three-repository-collaboration.md)
+  * [standards](en/standards/README.md)
+    * [contributor-contract](en/standards/contributor-contract.md)
+    * [documentation-and-ssot](en/standards/documentation-and-ssot.md)
+* [首页](zh/README.md)
+  * [Table of contents](zh/summary.md)
+  * [architecture](zh/architecture/README.md)
+    * [编译器流水线](zh/architecture/compiler-pipeline.md)
+    * [分层架构与职责](zh/architecture/layered-architecture.md)
+    * [源码目录地图](zh/architecture/source-tree.md)
+  * [ecosystem](zh/ecosystem/README.md)
+    * [Extensions 协作指南](zh/ecosystem/extensions-development.md)
+    * [仓库矩阵与来源优先级](zh/ecosystem/repository-matrix.md)
+    * [Spio 协作指南](zh/ecosystem/spio-development.md)
+    * [Spio 当前能力与边界](zh/ecosystem/spio-surface.md)
+    * [styio-audit 协作指南](zh/ecosystem/styio-audit-development.md)
+    * [styio-benchmark 协作指南](zh/ecosystem/styio-benchmark-development.md)
+    * [styio-community 社区指南](zh/ecosystem/styio-community-development.md)
+    * [Styio 本体协作指南](zh/ecosystem/styio-core-workflow.md)
+    * [styio-dev-env 用途说明](zh/ecosystem/styio-dev-env-development.md)
+    * [styio-platform 协作指南](zh/ecosystem/styio-platform-development.md)
+    * [三仓库协作指南](zh/ecosystem/three-repository-collaboration.md)
+    * [Vityo 协作指南](zh/ecosystem/vityo-development.md)
+  * [interfaces](zh/interfaces/README.md)
+    * [Analyzer 手册](zh/interfaces/analyzer-manual.md)
+    * [功能改动矩阵](zh/interfaces/change-matrix.md)
+    * [CodeGen 手册](zh/interfaces/codegen-manual.md)
+    * [核心接口总览](zh/interfaces/core-interfaces.md)
+    * [Parser 手册](zh/interfaces/parser-manual.md)
+    * [Runtime 手册](zh/interfaces/runtime-manual.md)
+  * [language](zh/language/README.md)
+    * [资源、@ 与标准流](zh/language/resources-and-stdio.md)
+    * [语言与设计 SSOT 地图](zh/language/ssot-map.md)
+  * [runbooks](zh/runbooks/README.md)
+    * [CLI 与 Machine Interface 改动手册](zh/runbooks/cli-and-machine-interface.md)
+    * [诊断与错误模型手册](zh/runbooks/diagnostics-and-error-model.md)
+    * [新 AST 或 IR 节点改动手册](zh/runbooks/new-ast-or-ir.md)
+    * [新增 Intrinsic 改动手册](zh/runbooks/new-intrinsic.md)
+    * [新 Token 或语法改动手册](zh/runbooks/new-token-or-syntax.md)
+    * [Parser Shadow 与双轨迁移手册](zh/runbooks/parser-shadow-and-dual-track.md)
+    * [标准流与资源能力改动手册](zh/runbooks/resources-and-stdio.md)
+    * [State / Pulse / Snapshot 改动手册](zh/runbooks/state-and-pulse.md)
+    * [测试金字塔与 Case 选型手册](zh/runbooks/testing-pyramid-and-case-selection.md)
+  * [standards](zh/standards/README.md)
+    * [审计、许可证与依赖合规](zh/standards/audit-license-and-dependency-policy.md)
+    * [编码与重构规则](zh/standards/coding-and-refactor-rules.md)
+    * [贡献者协作准则](zh/standards/contributor-contract.md)
+    * [文档与 SSOT 规则](zh/standards/documentation-and-ssot.md)
+    * [测试与回归策略](zh/standards/testing-and-regression.md)
+  * [toolchain](zh/toolchain/README.md)
+    * [构建工具链](zh/toolchain/build-toolchain.md)
+    * [CLI 与调试工作流](zh/toolchain/cli-and-debug-workflow.md)
