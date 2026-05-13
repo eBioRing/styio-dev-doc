@@ -34,7 +34,7 @@ Styio 的维护不能靠肉眼看 diff。每次改动至少要能落到某一类
 - `styio_security_test`
 - `styio_soak_test`
 
-当前 `styio@main` 还把：
+当前 `styio@nightly` 还把：
 
 - `docs/assets/workflow/TEST-CATALOG.md`
 - `scripts/docs-index.py`
@@ -131,7 +131,7 @@ Styio 现在并不只有“跑出来对”这一种检查。五层流水线把�
 
 ## 现在还要把文档测试当真
 
-`styio@main` 当前已经把 docs tree 维护流程正式化：
+`styio@nightly` 当前已经把 docs tree 维护流程正式化：
 
 - `docs/README.md` 规定目录边界
 - `docs/INDEX.md` 由脚本生成

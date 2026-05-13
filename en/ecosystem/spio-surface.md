@@ -4,14 +4,9 @@
 
 本文把 `spio` 与 `styio` 之间的静态交接契约统一称为 `styio-protocol`。它是 CLI / machine-info / compile-plan / diagnostics / compat matrix 组成的公开协议，不是运行时套件。
 
-## 本次核对基线
+## 当前阶段
 
-当前远端公开状态：
-
-- 最新工作线：`eBioRing/Spio@agent-dev` = `b3d044a95857bfe6206ef8fd591df456091e8f92`
-- 合并快照：`eBioRing/Spio@main` = `2ce0b8be1839b14d529b0af9c9d69011160456a1`
-
-这轮维护手册默认以 `agent-dev` 作为 `spio` 最新公开实现面。
+这轮维护手册默认以 `nightly` 作为 `Spio` 最新公开实现面。
 
 ## 已经公开的命令面
 
@@ -109,7 +104,7 @@
 
 ## 现在该看哪些目录
 
-如果你要维护 `spio@agent-dev`，优先看这些目录：
+如果你要维护 `Spio@nightly`，优先看这些目录：
 
 - `docs/governance/`
 - `docs/security/`

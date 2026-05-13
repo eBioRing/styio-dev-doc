@@ -17,7 +17,7 @@ Styio 对性能的要求极其苛刻。`styio-benchmark` 作为一个独立仓�
 
 - `styio` 的 `tests/` 目录负责“算得对不对”。
 - `styio-benchmark` 负责“算得快不快、省不省”。
-- 每次主仓合并到 `main` 前，必须触发 benchmark 仓库的回归检测。
+- 每次主仓合并到 `nightly` 前，必须触发 benchmark 仓库的回归检测。
 
 ## 维护原则
 

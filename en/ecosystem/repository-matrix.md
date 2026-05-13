@@ -34,39 +34,20 @@
 
 所以在写文档前，不要只看 GitHub 页面，要先看你本地现在到底有什么。
 
-## 本次远端同步基线
+## 分支与同步策略
 
-当维护者明确要求“按 GitHub 最新公开状态补文档”时，不要只说“最新”，要把 branch 和 commit 记下来。
+生态内所有仓库共享统一的分支模型。在阅读与更新文档时，应依据你的查阅目标选择正确的分支：
 
-本轮核对结果是：
-
-- `eBioRing/styio` `main` = `193f36b48e55e076d05c750d58e2850300ad6e43`
-- `eBioRing/styio` `dev` = `09e93c7fd6056fc2cbc2afab09353657d28a032b`
-- `eBioRing/Spio` `agent-dev` = `b3d044a95857bfe6206ef8fd591df456091e8f92`
-- `eBioRing/Spio` `main` = `2ce0b8be1839b14d529b0af9c9d69011160456a1`
-
-当前这次 GitBook 同步默认按：
-
-1. `styio`：`eBioRing/styio@main`
-2. `Spio`：`eBioRing/Spio@agent-dev`
-
-## 2026-04-12 本地核对快照
-
-当前本地可见的核心工作树状态是：
-
-- `styio`：`agent-dev`，活跃实现仓，工作树比云端更前
-- `Spio`：本地工作树仍在演进，但已发布远端 `agent-dev` 现在也有完整 native `C++20` surface、registry、publish 和 tool management
-- `Vityo`：`agent-dev`，处于 architecture bootstrap，当前以 `docs/` 为主要事实来源
-- `styio-ext-vsc`：当前工作区未见本地仓，文档回退到云端 `eBioRing/styio-ext-vsc`，其 `README.md` 目前极简
-- `styio-dev-doc`：`agent-dev`，当前这本 GitBook 的工作树
+- **`nightly`**：最新活跃开发分支。本地开发与事实核对优先看此分支。所有日常新功能与修复都应提交到此分支。
+- **`stable`**：稳定发布分支。查阅已正式发布的能力事实时，看此分支。
+- **`main`**：长期维护与对外展示分支，不作为日常活跃开发的基准。
 
 这意味着：
 
-- `styio` 文档应先看本地 `README.md`、`docs/`、`src/`、`tests/`
-- 如果你要同步已发布编译器事实，`styio` 先看 `eBioRing/styio@main`
-- `Spio` 文档应先看本地 `README.md`、`docs/`、`src/`；若同步已发布 package-manager surface，先看 `eBioRing/Spio@agent-dev`
-- `Vityo` 文档应先看本地 `README.md`、`docs/`
-- Extension 文档若无本地工作树，先看当前参考仓，再回到 `styio` / `Spio` 的公开接口
+- 任何文档核对应先看本地 `nightly` 检出树下的 `README.md`、`docs/`、`src/`、`tests/`。
+- 如果你要同步已发布事实，去查阅目标仓库的 `stable` 分支。
+- 只有在本地没有事实来源时，才回退到 GitHub 远端页面查找。
+- Extension 文档若无本地工作树，先看当前参考仓，再回到 `styio` / `Spio` 的公开接口。
 
 ## 文档更新前的最小检查
 

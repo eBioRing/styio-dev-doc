@@ -76,7 +76,7 @@
 
 ## `styio-nano` 相关现实
 
-当前远端 `main` 已经把 `styio-nano` packaging 命令并进了 full compiler CLI。
+当前远端 `nightly` 已经把 `styio-nano` packaging 命令并进了 full compiler CLI。
 
 要记住这几个边界：
 

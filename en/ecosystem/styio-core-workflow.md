@@ -1,135 +1,58 @@
-# Styio 本体开发流程
+# Styio 本体协作指南
 
-这页只写 `styio` 主仓库，也就是语言与编译器本体的开发流程。
+本页说明参与 `styio` 编译器主仓库开发时的推荐协作模式。
 
-不要把它和 `Spio`、`Vityo` 的流程混在一起。
+为了保持各组件的专注度，我们建议将主仓库的改动与其周边工具（如 `Spio`、`Vityo`）的适配工作在逻辑上进行区分。
 
-## 当前已发布主线
+## 分支协作模型
 
-按 2026-04-12 远端核对，`eBioRing/styio` 当前最新公开编译器主线是：
+生态内所有仓库共享统一的分支模型，旨在提供稳定的协作基准：
 
-- `main` = `193f36b48e55e076d05c750d58e2850300ad6e43`
+- **`nightly`**：当前活跃开发分支。建议将所有功能开发、错误修复及日常维护动作提交至此。
+- **`stable`**：稳定版本分支，用于发布。
+- **`main`**：长期维护与展示页面版本。
 
-同仓的 `dev` 仍存在，但这轮公开同步里不应把它当成最新编译器事实来源。
+在查阅编译器事实或进行本地验证时，建议以 `nightly` 分支的工作树为准。
 
-## `styio` 本体负责什么
+## `styio` 主仓库的协作范畴
 
-`styio` 主仓库当前拥有：
+`styio` 主仓库主要承载以下核心资产：
 
-- 语言设计与语义
-- parser / analyzer / IR / codegen / runtime / JIT
-- CLI 与 machine interface
-- `styio-nano` profile / packaging 相关 CLI 与配置
-- milestone、pipeline、安全与回归测试
-- 主仓库内部设计、规格、ADR、workflow assets 与历史文档
+- **语言设计**：语法定义、语义规则与核心规格。
+- **编译器核心**：Parser、Analyzer、IR 生成、CodeGen 及 JIT 运行时。
+- **基础设施**：CLI 接口、`styio-nano` 配置、自动化测试集（Milestone, Pipeline 等）。
+- **工程决策**：ADR 记录、维护手册及设计文档。
 
-如果你改的是这些东西，开发流程应当在 `styio` 主仓库内闭环，而不是先去改工具仓。
+## 推荐的改动闭环
 
-## 本体开发的顺序
+为了确保你的贡献能被高质量集成，我们推荐以下开发节奏：
 
-`styio` 的标准顺序是：
+1. **对齐设计**：在修改代码前，先在 `docs/design/` 或 `docs/specs/` 中找到对应的规格说明。
+2. **源码实现**：在核心路径完成功能逻辑。
+3. **验证回归**：补全自动化测试，确保新功能符合预期且不影响现有链路。
+4. **同步文档**：在本项目的手册中更新相关的维护说明，帮助后来的开发者理解你的设计。
 
-1. 先确认 SSOT
-2. 再改源码
-3. 再补测试
-4. 最后同步文档
+这种全链路的“小步快跑”模式是维持编译器长期健康的最佳实践。
 
-其中第一步通常落在：
+## 协作中的角色分工
 
-- `docs/design/`
-- `docs/specs/`
-- `docs/assets/`
-- `docs/for_spio/`
-- `src/`
-- `tests/`
+在 Styio 生态中，我们遵循“语义源头”原则：
 
-## 本体开发的最小闭环
+- **编译器作为生产者**：定义语言事实，并通过 `styio-protocol` 等公共接口向外暴露能力。
+- **周边工具作为消费者**：如 `Spio` 和 `Vityo`，它们通过消费公共接口来提供包管理或 IDE 支持。
 
-语言或编译器功能改动至少应覆盖：
+当你的改动影响到公共接口（如修改了 `--machine-info` 输出或新增了诊断分类）时，建议同步知会 `Spio` 和 `Vityo` 的维护者。
 
-- 设计或规格
-- 主仓源码
-- 自动化测试
-- 这份开发者文档中的对应维护页
+## 响应来自 IDE 的服务需求
 
-如果只改了源码和一两个样例，不算真正维护完成。
+`Vityo` 等工具可能会对编译器的分析能力提出新要求（如更细粒度的 Token 范围、语义补全数据等）。在这种情况下，我们倾向于：
 
-## 现在还要一起看的三类维护资产
+1. **接口化处理**：将需求转化为编译器侧稳定的公共服务接口。
+2. **保持语义纯粹**：确保语言的核心语义由编译器定义，不因特定的前端交互需求而扭曲语言设计。
+3. **完善适配指引**：在提供新接口的同时，为前端开发者提供清晰的消费说明。
 
-除了编译器源码本身，`styio@main` 现在还有三类经常被漏看的东西：
-
-- `docs/assets/`
-  - 工作流、测试目录、repo hygiene、模板
-- `docs/for_spio/`
-  - `styio-protocol` 的公开协议 / 交接包
-- `configs/styio-nano-*.toml`
-  - `styio-nano` profile / package / publish 配置样例
-
-如果你改的是 machine interface、测试目录、`styio-nano` packaging 或对外 `styio-protocol`，不看这三类文件，文档就会写残。
-
-## 本体仓最常见的改动类型
-
-| 改动类型 | 先看哪里 |
-| --- | --- |
-| 新 token / 新语法 | parser、token、设计文档 |
-| 新 AST / IR 节点 | AST、analyzer、IR、codegen |
-| 新 intrinsic | analyzer、pulse、IR、codegen |
-| state / snapshot / history | analyzer、pulse ledger、codegen |
-| CLI / machine interface | `main.cpp`、diagnostics、测试 |
-| `styio-nano` profile / packaging | `main.cpp`、`configs/styio-nano-*.toml`、`scripts/gen-styio-nano-profile.py` |
-| docs index / docs audit | `docs/README.md`、`scripts/docs-index.py`、`scripts/docs-audit.py`、`tests/CMakeLists.txt` |
-
-这些具体流程已经在本书的 runbook 区里拆开了。
-
-## 本体仓的回归优先级
-
-`styio` 改动优先看这些测试层：
-
-- `milestone`
-- `styio_pipeline`
-- `security`
-- `soak`
-- `docs`
-
-如果改 parser，还要看：
-
-- `shadow_gate`
-- `parser_legacy_entry_audit`
-
-## 什么时候才去动工具仓
-
-只有当本体改动影响到**公共接口**时，才需要同步工具仓文档或实现。典型例子：
-
-- `--machine-info=json` 字段变化
-- 诊断 `category` / `code` / `subcode` 变化
-- 新增或修改 `styio-protocol`，例如 compile-plan / machine-info / diagnostics contract
-- `docs/for_spio/` 中的 `styio-protocol` 要求变化
-- 新的 diagnostics/token/block range 对 IDE 可用
-- 新 token、新语法或新诊断形状需要 `Vityo` 适配高亮、补全、hover、diagnostic range 或 outline
-- 新版本发布需要 `Spio` 更新版本托管仓库、toolchain index、兼容矩阵、registry/publish 元数据和通知消息
-- `Vityo` 发现基础 IDE 套件缺少前端所需的 token/range/completion/hover/diagnostic/workspace query 能力
-
-否则，不要让工具仓反向驱动语言本体。
-
-## 什么时候接受 `Vityo` 的上游需求
-
-`Vityo` 可以作为 `styio` IDE 维护组件的需求上游，但范围限定在 IDE 服务能力：语法分析结果、增量解析、semantic token、completion source、hover payload、diagnostic range、workspace symbol 和运行事件摘要。
-
-接受这类需求时，`styio` 仍然要在主仓内闭环：
-
-1. 将需求落到 IDE / LSP / parser service / analyzer 的公共接口。
-2. 保持语言语义由 `styio` 定义，不把前端 workaround 反向固化为语义。
-3. 补 IDE/LSP/security/docs gate。
-4. 给 `Vityo` 明确的消费说明和兼容边界。
-
-## 本体开发的维护原则
-
-- 语言真相在 `styio`
-- 编译器验收在 `styio/tests`
-- 工具仓只能消费公共接口，不能定义语言语义
-
-## 继续阅读
+## 持续阅读建议
 
 - [核心接口总览](../interfaces/core-interfaces.md)
 - [功能改动矩阵](../interfaces/change-matrix.md)
-- [维护任务](../README.md)
+- [维护任务导引](../README.md)

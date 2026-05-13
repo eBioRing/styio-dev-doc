@@ -5,40 +5,40 @@
 ## 全局协作与生态矩阵
 
 * [仓库矩阵与来源优先级](ecosystem/repository-matrix.md)
-* [三仓库协作流程](ecosystem/three-repository-collaboration.md)
+* [三仓库协作指南](ecosystem/three-repository-collaboration.md)
 
 ## styio (编译器与语言)
 
-* [Styio 本体开发流程](ecosystem/styio-core-workflow.md)
+* [Styio 本体协作指南](ecosystem/styio-core-workflow.md)
 * [构建工具链](toolchain/build-toolchain.md)
 * [CLI 与调试工作流](toolchain/cli-and-debug-workflow.md)
 
 ## Spio (包管理与工作流)
 
-* [Spio 开发指引](ecosystem/spio-development.md)
+* [Spio 协作指南](ecosystem/spio-development.md)
 * [Spio 当前能力与边界](ecosystem/spio-surface.md)
 
 ## Vityo (IDE 与交互)
 
-* [Vityo 开发指引](ecosystem/vityo-development.md)
-* [Extensions 开发指引](ecosystem/extensions-development.md)
+* [Vityo 协作指南](ecosystem/vityo-development.md)
+* [Extensions 协作指南](ecosystem/extensions-development.md)
 
 ## styio-audit (审计与合规)
 
-* [styio-audit 开发指引](ecosystem/styio-audit-development.md)
+* [styio-audit 协作指南](ecosystem/styio-audit-development.md)
 * [审计、许可证与依赖合规](standards/audit-license-and-dependency-policy.md)
 
 ## styio-benchmark (性能与基准)
 
-* [styio-benchmark 开发指引](ecosystem/styio-benchmark-development.md)
+* [styio-benchmark 协作指南](ecosystem/styio-benchmark-development.md)
 
 ## styio-platform (平台与服务)
 
-* [styio-platform 开发指引](ecosystem/styio-platform-development.md)
+* [styio-platform 协作指南](ecosystem/styio-platform-development.md)
 
 ## styio-community (社区与治理)
 
-* [styio-community 治理指引](ecosystem/styio-community-development.md)
+* [styio-community 社区指南](ecosystem/styio-community-development.md)
 
 ## styio-dev-env (开发环境)
 
@@ -46,7 +46,7 @@
 
 ## 规范
 
-* [贡献者契约](standards/contributor-contract.md)
+* [贡献者协作准则](standards/contributor-contract.md)
 * [编码与重构规则](standards/coding-and-refactor-rules.md)
 * [测试与回归策略](standards/testing-and-regression.md)
 * [文档与 SSOT 规则](standards/documentation-and-ssot.md)
