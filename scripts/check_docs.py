@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 BOOK_ROOTS = [ROOT / "zh", ROOT / "en"]
 PROHIBITED_ROOT_FILES = [ROOT / "SUMMARY.md", ROOT / "LANGS.md"]
+MIRRORED_BOOK_ROOTS = (ROOT / "zh", ROOT / "en")
 
 LINK_RE = re.compile(r"!?\[[^\]]+\]\(([^)]+)\)")
 FENCED_CODE_RE = re.compile(r"```.*?```", re.DOTALL)
@@ -104,6 +105,28 @@ def check_book(book_root: Path) -> list[str]:
     return errors
 
 
+def check_mirrored_markdown_paths(left: Path, right: Path) -> list[str]:
+    errors: list[str] = []
+    left_files = {relative_to(path, left) for path in markdown_files(left)}
+    right_files = {relative_to(path, right) for path in markdown_files(right)}
+
+    missing_in_right = sorted(left_files - right_files)
+    if missing_in_right:
+        errors.append(
+            f"{relative_to(right, ROOT)} is missing markdown pages mirrored from {relative_to(left, ROOT)}: "
+            + ", ".join(missing_in_right)
+        )
+
+    missing_in_left = sorted(right_files - left_files)
+    if missing_in_left:
+        errors.append(
+            f"{relative_to(left, ROOT)} is missing markdown pages mirrored from {relative_to(right, ROOT)}: "
+            + ", ".join(missing_in_left)
+        )
+
+    return errors
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -118,6 +141,9 @@ def main() -> int:
             errors.append(f"{relative_to(book_root, ROOT)} directory is required")
             continue
         errors.extend(check_book(book_root))
+
+    if all(book_root.is_dir() for book_root in MIRRORED_BOOK_ROOTS):
+        errors.extend(check_mirrored_markdown_paths(*MIRRORED_BOOK_ROOTS))
 
     if errors:
         print("Docs gate failed:")
