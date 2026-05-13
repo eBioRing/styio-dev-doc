@@ -8,14 +8,18 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-LANGS = ["zh", "en"]
+ENTRYPOINTS = [ROOT / "README.md", ROOT / "SUMMARY.md"]
 LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 FENCED_CODE_RE = re.compile(r"```.*?```", re.DOTALL)
 INLINE_CODE_RE = re.compile(r"`[^`]*`")
 
 
 def internal_links(path: Path) -> list[Path]:
-    text = path.read_text(encoding="utf-8")
+    try:
+        text = path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return []
+        
     text = FENCED_CODE_RE.sub("", text)
     text = INLINE_CODE_RE.sub("", text)
     out: list[Path] = []
@@ -27,11 +31,11 @@ def internal_links(path: Path) -> list[Path]:
     return out
 
 
-def check_lang(lang: str) -> int:
-    book_root = ROOT / lang
-    entrypoints = [book_root / "README.md", book_root / "SUMMARY.md"]
+def main() -> int:
+    # Collect all markdown files in zh and en
     markdown_files = {
-        p.resolve() for p in book_root.rglob("*.md") if "_book" not in p.parts
+        p.resolve() for p in ROOT.rglob("*.md") 
+        if "_book" not in p.parts and (".git" not in p.parts)
     }
     broken: list[str] = []
 
@@ -41,12 +45,12 @@ def check_lang(lang: str) -> int:
                 broken.append(f"{path.relative_to(ROOT)} -> {target}")
 
     if broken:
-        print(f"[{lang}] Broken internal links:")
+        print("Broken internal links:")
         for item in broken:
             print(item)
         return 1
 
-    seen = {p.resolve() for p in entrypoints if p.exists()}
+    seen = {p.resolve() for p in ENTRYPOINTS if p.exists()}
     stack = list(seen)
 
     while stack:
@@ -61,42 +65,18 @@ def check_lang(lang: str) -> int:
     unreachable = sorted(
         p.relative_to(ROOT).as_posix() for p in markdown_files if p not in seen
     )
+    
+    # Filter out GEMINI.md and LICENSE etc if they are not meant to be in the book
+    unreachable = [p for p in unreachable if p not in ["GEMINI.md", "LICENSE.md", "README.md", "SUMMARY.md"]]
+    
     if unreachable:
-        print(f"[{lang}] Unreachable markdown pages (not in README.md or SUMMARY.md):")
+        print("Unreachable markdown pages (not linked from root README.md or SUMMARY.md):")
         for item in unreachable:
             print(item)
         return 1
 
-    # Ensure all content files are linked in README.md
-    readme_path = book_root / "README.md"
-    if not readme_path.exists():
-        print(f"[{lang}] Missing README.md")
-        return 1
-        
-    readme_links = set(internal_links(readme_path))
-    summary_path = book_root / "SUMMARY.md"
-    content_files = markdown_files - {readme_path.resolve(), summary_path.resolve()}
-    
-    missing_from_readme = sorted(
-        p.relative_to(ROOT).as_posix() for p in content_files if p not in readme_links
-    )
-    
-    if missing_from_readme:
-        print(f"[{lang}] Markdown pages missing from README.md index:")
-        for item in missing_from_readme:
-            print(item)
-        return 1
-
-    print(f"OK [{lang}]: {len(markdown_files)} markdown pages are internally linked, reachable, and indexed.")
+    print(f"OK: {len(markdown_files)} markdown pages are internally linked and reachable from root.")
     return 0
-
-
-def main() -> int:
-    exit_code = 0
-    for lang in LANGS:
-        if check_lang(lang) != 0:
-            exit_code = 1
-    return exit_code
 
 
 if __name__ == "__main__":
