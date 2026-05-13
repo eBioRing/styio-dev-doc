@@ -1,7 +1,15 @@
-# Styio Developer Manual
+# Styio Developer Manual / Styio 维护者手册
 
-This repository is the GitBook source for the Styio developer manual.
+Welcome to the Styio ecosystem developer documentation. / 欢迎来到 Styio 生态开发者文档。
 
-The maintained entry point is [`en/README.md`](en/README.md).
+## Language / 语言选择
 
-Maintain this repository by editing the documentation content first. Treat the GitBook layer as stable infrastructure and only verify that rendering still works.
+* [简体中文 (Chinese)](zh/README.md)
+* [English](en/README.md)
+
+---
+
+### Maintenance Note / 维护说明
+
+This repository is synced with GitBook. All modifications should be made in the `zh/` or `en/` directories.
+本仓库与 GitBook 同步。所有修改应在 `zh/` 或 `en/` 目录下进行。
