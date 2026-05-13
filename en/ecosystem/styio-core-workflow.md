@@ -2,7 +2,7 @@
 
 这页只写 `styio` 主仓库，也就是语言与编译器本体的开发流程。
 
-不要把它和 `styio-spio`、`styio-view` 的流程混在一起。
+不要把它和 `Spio`、`Vityo` 的流程混在一起。
 
 ## 当前已发布主线
 
@@ -105,22 +105,22 @@
 - 新增或修改 `styio-protocol`，例如 compile-plan / machine-info / diagnostics contract
 - `docs/for_spio/` 中的 `styio-protocol` 要求变化
 - 新的 diagnostics/token/block range 对 IDE 可用
-- 新 token、新语法或新诊断形状需要 `styio-view` 适配高亮、补全、hover、diagnostic range 或 outline
-- 新版本发布需要 `styio-spio` 更新版本托管仓库、toolchain index、兼容矩阵、registry/publish 元数据和通知消息
-- `styio-view` 发现基础 IDE 套件缺少前端所需的 token/range/completion/hover/diagnostic/workspace query 能力
+- 新 token、新语法或新诊断形状需要 `Vityo` 适配高亮、补全、hover、diagnostic range 或 outline
+- 新版本发布需要 `Spio` 更新版本托管仓库、toolchain index、兼容矩阵、registry/publish 元数据和通知消息
+- `Vityo` 发现基础 IDE 套件缺少前端所需的 token/range/completion/hover/diagnostic/workspace query 能力
 
 否则，不要让工具仓反向驱动语言本体。
 
-## 什么时候接受 `styio-view` 的上游需求
+## 什么时候接受 `Vityo` 的上游需求
 
-`styio-view` 可以作为 `styio` IDE 维护组件的需求上游，但范围限定在 IDE 服务能力：语法分析结果、增量解析、semantic token、completion source、hover payload、diagnostic range、workspace symbol 和运行事件摘要。
+`Vityo` 可以作为 `styio` IDE 维护组件的需求上游，但范围限定在 IDE 服务能力：语法分析结果、增量解析、semantic token、completion source、hover payload、diagnostic range、workspace symbol 和运行事件摘要。
 
 接受这类需求时，`styio` 仍然要在主仓内闭环：
 
 1. 将需求落到 IDE / LSP / parser service / analyzer 的公共接口。
 2. 保持语言语义由 `styio` 定义，不把前端 workaround 反向固化为语义。
 3. 补 IDE/LSP/security/docs gate。
-4. 给 `styio-view` 明确的消费说明和兼容边界。
+4. 给 `Vityo` 明确的消费说明和兼容边界。
 
 ## 本体开发的维护原则
 

@@ -1,23 +1,23 @@
-# styio-spio 开发指引
+# Spio 开发指引
 
-这页只写 `styio-spio` 的开发流程和约束。
+这页只写 `Spio` 的开发流程和约束。
 
-`styio-spio` 是 Styio 的包管理器和项目工作流工具，不是编译器子模块。
+`Spio` 是 Styio 的包管理器和项目工作流工具，不是编译器子模块。
 
 ## 当前阶段
 
-按 2026-04-12 GitHub 核对，`styio-spio` 现在应按这些已发布事实来理解：
+按 2026-04-12 GitHub 核对，`Spio` 现在应按这些已发布事实来理解：
 
-- `eBioRing/styio-spio@agent-dev` 是当前最新公开工作线
+- `eBioRing/Spio@agent-dev` 是当前最新公开工作线
 - native `C++20` + `CMake` core 已经承载真实 CLI / resolver / pack / publish / tool lifecycle
 - Python bootstrap 仍在树内，但只作为迁移参考
 
-所以维护 `styio-spio` 时，不要再把它写成“只有 bootstrap 想法”的工具仓。更准确的说法是：
+所以维护 `Spio` 时，不要再把它写成“只有 bootstrap 想法”的工具仓。更准确的说法是：
 
 - 它已经有真实 package-manager surface
 - 同时仍保留 bootstrap 到 native 的迁移包袱
 
-## `styio-spio` 负责什么
+## `Spio` 负责什么
 
 当前职责包括：
 
@@ -38,7 +38,7 @@
 
 ## 文档优先级
 
-`styio-spio/docs/README.md` 当前给出的优先级是：
+`Spio/docs/README.md` 当前给出的优先级是：
 
 1. `governance/`
 2. `security/`
@@ -80,7 +80,7 @@
 - compiler version、channel、compat matrix 和迁移窗口
 - `spio` 需要验证的 schema、样例和 contract tests
 
-只要需求越过进程边界，就先判断它是不是 `styio-protocol` 变更。是协议变更时，由 `styio` 冻结生产者事实，`styio-spio` 只负责消费、校验和兼容策略；不是协议变更时，不要把 `styio` 内部实现拿进 `spio`。
+只要需求越过进程边界，就先判断它是不是 `styio-protocol` 变更。是协议变更时，由 `styio` 冻结生产者事实，`Spio` 只负责消费、校验和兼容策略；不是协议变更时，不要把 `styio` 内部实现拿进 `spio`。
 
 ## 代码树怎么读
 
@@ -111,7 +111,7 @@
 - 新工作优先落到原生 `C++20` 路径
 - 旧 Python bootstrap 只作为参考，不应继续扩张成长期主线
 
-## `styio-spio` 的开发顺序
+## `Spio` 的开发顺序
 
 推荐顺序是：
 
@@ -172,7 +172,7 @@
 
 ## 和 `styio` 主仓的正确关系
 
-`styio-spio` 只能消费这些公开边界：
+`Spio` 只能消费这些公开边界：
 
 - `styio --machine-info=json`
 - 已发布的 `styio-protocol` compile-plan contract
@@ -182,9 +182,9 @@
 
 ## `styio` 新版本发布后的跟进责任
 
-当 `styio` 发布新版本时，`styio` 是上游，`styio-spio` 是版本托管和包生态消费方。`styio-spio` 不能自定义编译器版本事实，但必须把新版本同步到自己的工具链和 registry 工作流。
+当 `styio` 发布新版本时，`styio` 是上游，`Spio` 是版本托管和包生态消费方。`Spio` 不能自定义编译器版本事实，但必须把新版本同步到自己的工具链和 registry 工作流。
 
-每次 `styio` 发版后，`styio-spio` 至少检查这些项：
+每次 `styio` 发版后，`Spio` 至少检查这些项：
 
 1. 版本托管仓库或 toolchain index 是否新增该 `styio` 版本。
 2. `spio tool install/use/pin` 是否能安装、选择和固定该版本。
@@ -210,5 +210,5 @@
 ## 继续阅读
 
 - [仓库矩阵与来源优先级](repository-matrix.md)
-- [styio-spio 当前能力与边界](styio-spio-surface.md)
+- [Spio 当前能力与边界](spio-surface.md)
 - [CLI 与 Machine Interface 改动手册](../runbooks/cli-and-machine-interface.md)

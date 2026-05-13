@@ -1,6 +1,6 @@
-# styio-spio 当前能力与边界
+# Spio 当前能力与边界
 
-这页不讲抽象“愿景”，只记录 2026-04-12 这轮 GitHub 同步里，`styio-spio` 当前已经公开了什么、还没公开什么。
+这页不讲抽象“愿景”，只记录 2026-04-12 这轮 GitHub 同步里，`Spio` 当前已经公开了什么、还没公开什么。
 
 本文把 `spio` 与 `styio` 之间的静态交接契约统一称为 `styio-protocol`。它是 CLI / machine-info / compile-plan / diagnostics / compat matrix 组成的公开协议，不是运行时套件。
 
@@ -8,8 +8,8 @@
 
 当前远端公开状态：
 
-- 最新工作线：`eBioRing/styio-spio@agent-dev` = `b3d044a95857bfe6206ef8fd591df456091e8f92`
-- 合并快照：`eBioRing/styio-spio@main` = `2ce0b8be1839b14d529b0af9c9d69011160456a1`
+- 最新工作线：`eBioRing/Spio@agent-dev` = `b3d044a95857bfe6206ef8fd591df456091e8f92`
+- 合并快照：`eBioRing/Spio@main` = `2ce0b8be1839b14d529b0af9c9d69011160456a1`
 
 这轮维护手册默认以 `agent-dev` 作为 `spio` 最新公开实现面。
 
@@ -153,6 +153,6 @@
 
 ## 继续阅读
 
-- [styio-spio 开发指引](styio-spio-development.md)
+- [Spio 开发指引](spio-development.md)
 - [仓库矩阵与来源优先级](repository-matrix.md)
 - [CLI 与 Machine Interface 改动手册](../runbooks/cli-and-machine-interface.md)

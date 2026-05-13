@@ -5,8 +5,8 @@
 当前审计框架由 `styio-audit` 维护，并外部扫描这些项目：
 
 - `styio` / 本地 `styio-nightly`
-- `styio-spio`
-- `styio-view`
+- `Spio`
+- `Vityo`
 - `styio-platform`
 - `styio-audit`
 
@@ -103,8 +103,8 @@ python3 -m unittest discover -s tests -v
 python3 -m styio_audit.cli validate-modules
 python3 -m styio_audit.cli gate --repo . --project styio-audit --framework-only
 python3 -m styio_audit.cli gate --repo /home/unka/styio-nightly --project styio --framework-only
-python3 -m styio_audit.cli gate --repo /home/unka/styio-spio --project styio-spio --framework-only
-python3 -m styio_audit.cli gate --repo /home/unka/styio-view --project styio-view --framework-only
+python3 -m styio_audit.cli gate --repo /home/unka/Spio --project Spio --framework-only
+python3 -m styio_audit.cli gate --repo /home/unka/Vityo --project Vityo --framework-only
 python3 -m styio_audit.cli gate --repo /home/unka/styio-platform --project styio-platform --framework-only
 ```
 

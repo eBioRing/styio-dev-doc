@@ -2,7 +2,7 @@
 
 这页针对的是 `src/main.cpp` 这条入口链，而不是一般的语言功能改动。
 
-如果你要改 CLI 参数、退出码、JSONL 诊断或 `--machine-info=json` 的握手内容，这页就是最小闭环。被 `styio-spio`、`styio-view` 或扩展跨仓消费的部分统一归入 `styio-protocol`。
+如果你要改 CLI 参数、退出码、JSONL 诊断或 `--machine-info=json` 的握手内容，这页就是最小闭环。被 `Spio`、`Vityo` 或扩展跨仓消费的部分统一归入 `styio-protocol`。
 
 ## 当前 CLI 契约
 

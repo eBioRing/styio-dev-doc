@@ -35,8 +35,8 @@
 这条规则当前尤其适用于：
 
 - `styio`
-- `styio-spio`
-- `styio-view`
+- `Spio`
+- `Vityo`
 
 如果本地工作树已经比云端更前，不要再拿旧的 GitHub 页面覆盖本地事实。
 
