@@ -1,0 +1,1002 @@
+
+<!DOCTYPE HTML>
+<html lang="zh" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Analyzer 手册 · HonKit</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.1.7">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="codegen-manual.html" />
+    
+    
+    <link rel="prev" href="parser-manual.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="輸入並搜尋" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">全局协作与生态矩阵</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../ecosystem/repository-matrix.html">
+            
+                <a href="../ecosystem/repository-matrix.html">
+            
+                    
+                    仓库矩阵与来源优先级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../ecosystem/three-repository-collaboration.html">
+            
+                <a href="../ecosystem/three-repository-collaboration.html">
+            
+                    
+                    三仓库协作指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">styio (编译器与语言)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../ecosystem/styio-core-workflow.html">
+            
+                <a href="../ecosystem/styio-core-workflow.html">
+            
+                    
+                    Styio 本体协作指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../toolchain/build-toolchain.html">
+            
+                <a href="../toolchain/build-toolchain.html">
+            
+                    
+                    构建工具链
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../toolchain/cli-and-debug-workflow.html">
+            
+                <a href="../toolchain/cli-and-debug-workflow.html">
+            
+                    
+                    CLI 与调试工作流
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Spio (包管理与工作流)</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../ecosystem/spio-development.html">
+            
+                <a href="../ecosystem/spio-development.html">
+            
+                    
+                    Spio 协作指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../ecosystem/spio-surface.html">
+            
+                <a href="../ecosystem/spio-surface.html">
+            
+                    
+                    Spio 当前能力与边界
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Vityo (IDE 与交互)</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../ecosystem/vityo-development.html">
+            
+                <a href="../ecosystem/vityo-development.html">
+            
+                    
+                    Vityo 协作指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../ecosystem/extensions-development.html">
+            
+                <a href="../ecosystem/extensions-development.html">
+            
+                    
+                    Extensions 协作指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">styio-audit (审计与合规)</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../ecosystem/styio-audit-development.html">
+            
+                <a href="../ecosystem/styio-audit-development.html">
+            
+                    
+                    styio-audit 协作指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="../standards/audit-license-and-dependency-policy.html">
+            
+                <a href="../standards/audit-license-and-dependency-policy.html">
+            
+                    
+                    审计、许可证与依赖合规
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">styio-benchmark (性能与基准)</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../ecosystem/styio-benchmark-development.html">
+            
+                <a href="../ecosystem/styio-benchmark-development.html">
+            
+                    
+                    styio-benchmark 协作指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">styio-platform (平台与服务)</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../ecosystem/styio-platform-development.html">
+            
+                <a href="../ecosystem/styio-platform-development.html">
+            
+                    
+                    styio-platform 协作指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">styio-community (社区与治理)</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../ecosystem/styio-community-development.html">
+            
+                <a href="../ecosystem/styio-community-development.html">
+            
+                    
+                    styio-community 社区指南
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">styio-dev-env (开发环境)</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../ecosystem/styio-dev-env-development.html">
+            
+                <a href="../ecosystem/styio-dev-env-development.html">
+            
+                    
+                    styio-dev-env 用途说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">规范</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="../standards/contributor-contract.html">
+            
+                <a href="../standards/contributor-contract.html">
+            
+                    
+                    贡献者协作准则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.2" data-path="../standards/coding-and-refactor-rules.html">
+            
+                <a href="../standards/coding-and-refactor-rules.html">
+            
+                    
+                    编码与重构规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.3" data-path="../standards/testing-and-regression.html">
+            
+                <a href="../standards/testing-and-regression.html">
+            
+                    
+                    测试与回归策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="11.4" data-path="../standards/documentation-and-ssot.html">
+            
+                <a href="../standards/documentation-and-ssot.html">
+            
+                    
+                    文档与 SSOT 规则
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">架构</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../architecture/layered-architecture.html">
+            
+                <a href="../architecture/layered-architecture.html">
+            
+                    
+                    分层架构与职责
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="../architecture/compiler-pipeline.html">
+            
+                <a href="../architecture/compiler-pipeline.html">
+            
+                    
+                    编译器流水线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="../architecture/source-tree.html">
+            
+                <a href="../architecture/source-tree.html">
+            
+                    
+                    源码目录地图
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">接口</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="core-interfaces.html">
+            
+                <a href="core-interfaces.html">
+            
+                    
+                    核心接口总览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="parser-manual.html">
+            
+                <a href="parser-manual.html">
+            
+                    
+                    Parser 手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="13.3" data-path="analyzer-manual.html">
+            
+                <a href="analyzer-manual.html">
+            
+                    
+                    Analyzer 手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" data-path="codegen-manual.html">
+            
+                <a href="codegen-manual.html">
+            
+                    
+                    CodeGen 手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" data-path="runtime-manual.html">
+            
+                <a href="runtime-manual.html">
+            
+                    
+                    Runtime 手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.6" data-path="change-matrix.html">
+            
+                <a href="change-matrix.html">
+            
+                    
+                    功能改动矩阵
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">维护任务</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../runbooks/new-token-or-syntax.html">
+            
+                <a href="../runbooks/new-token-or-syntax.html">
+            
+                    
+                    新 Token 或语法改动手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.2" data-path="../runbooks/new-ast-or-ir.html">
+            
+                <a href="../runbooks/new-ast-or-ir.html">
+            
+                    
+                    新 AST 或 IR 节点改动手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.3" data-path="../runbooks/resources-and-stdio.html">
+            
+                <a href="../runbooks/resources-and-stdio.html">
+            
+                    
+                    标准流与资源能力改动手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.4" data-path="../runbooks/new-intrinsic.html">
+            
+                <a href="../runbooks/new-intrinsic.html">
+            
+                    
+                    新增 Intrinsic 改动手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.5" data-path="../runbooks/state-and-pulse.html">
+            
+                <a href="../runbooks/state-and-pulse.html">
+            
+                    
+                    State / Pulse / Snapshot 改动手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.6" data-path="../runbooks/diagnostics-and-error-model.html">
+            
+                <a href="../runbooks/diagnostics-and-error-model.html">
+            
+                    
+                    诊断与错误模型手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.7" data-path="../runbooks/parser-shadow-and-dual-track.html">
+            
+                <a href="../runbooks/parser-shadow-and-dual-track.html">
+            
+                    
+                    Parser Shadow 与双轨迁移手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.8" data-path="../runbooks/testing-pyramid-and-case-selection.html">
+            
+                <a href="../runbooks/testing-pyramid-and-case-selection.html">
+            
+                    
+                    测试金字塔与 Case 选型手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="14.9" data-path="../runbooks/cli-and-machine-interface.html">
+            
+                <a href="../runbooks/cli-and-machine-interface.html">
+            
+                    
+                    CLI 与 Machine Interface 改动手册
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">语言 SSOT</li>
+        
+        
+    
+        <li class="chapter " data-level="15.1" data-path="../language/ssot-map.html">
+            
+                <a href="../language/ssot-map.html">
+            
+                    
+                    语言与设计 SSOT 地图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="15.2" data-path="../language/resources-and-stdio.html">
+            
+                <a href="../language/resources-and-stdio.html">
+            
+                    
+                    资源、@ 与标准流
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            本書使用 HonKit 釋出
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Analyzer 手册</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="analyzer-手册">Analyzer 手册</h1>
+<p>Analyzer 是 Styio 真正的语义边界层。它既要做 type inference，也要把 AST 降成 Styio IR。</p>
+<h2 id="角色边界">角色边界</h2>
+<p>Analyzer 层负责：</p>
+<ul>
+<li>类型推断</li>
+<li>语义约束</li>
+<li>AST 到 Styio IR lowering</li>
+<li>某些 pulse/state 规划信息的传递</li>
+</ul>
+<p>Analyzer 层不负责：</p>
+<ul>
+<li>token / 语法判定</li>
+<li>LLVM IR 细节</li>
+<li>FFI 符号绑定</li>
+</ul>
+<h2 id="主接口">主接口</h2>
+<p>文件：<code>src/StyioAnalyzer/ASTAnalyzer.hpp</code></p>
+<p>关键对象：<code>StyioAnalyzer</code></p>
+<p>最重要的两步：</p>
+<pre><code class="lang-cpp">analyzer.<span class="hljs-built_in">typeInfer</span>(ast);
+StyioIR* ir = analyzer.<span class="hljs-built_in">toStyioIR</span>(ast);
+</code></pre>
+<p><code>main.cpp</code> 当前就是按这个顺序驱动的。</p>
+<h2 id="visitor-面">visitor 面</h2>
+<p><code>StyioAnalyzerVisitor</code> 的模板类型列表基本就是 analyzer 当前承认的 AST 面。</p>
+<p>这意味着：</p>
+<ul>
+<li>新 AST 节点如果不进这里，analyzer 看不见它</li>
+<li>不仅要补 <code>typeInfer(Node*)</code></li>
+<li>还要补 <code>toStyioIR(Node*)</code></li>
+</ul>
+<p>这两个列表本身就是重要接口，不只是声明噪音。</p>
+<h2 id="状态字段">状态字段</h2>
+<p><code>StyioAnalyzer</code> 里当前可见的关键状态包括：</p>
+<table>
+<thead>
+<tr>
+<th>字段 / 方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>func_defs</code></td>
+<td>记录函数定义</td>
+</tr>
+<tr>
+<td><code>local_binding_types</code></td>
+<td>局部绑定类型表</td>
+</tr>
+<tr>
+<td><code>cur_pulse_plan()</code> / <code>set_cur_pulse_plan(...)</code></td>
+<td>当前 pulse plan</td>
+</tr>
+<tr>
+<td><code>active_series_slot()</code> / <code>set_active_series_slot(...)</code></td>
+<td>当前 series slot</td>
+</tr>
+<tr>
+<td><code>set_post_pulse_hist_context(...)</code></td>
+<td>post-pulse history 上下文</td>
+</tr>
+<tr>
+<td><code>is_snapshot_var(...)</code></td>
+<td>判断 snapshot 变量</td>
+</tr>
+</tbody>
+</table>
+<p>这些状态解释了 analyzer 为什么不只是“纯 visitor”，而是带上下文的 lowering 引擎。</p>
+<h2 id="tostyioir-的现实职责"><code>toStyioIR</code> 的现实职责</h2>
+<p>从 <code>ToStyioIR.cpp</code> 可以直接看出来，这层不只是简单 AST 翻译，它还会：</p>
+<ul>
+<li>为函数返回类型兜底</li>
+<li>识别 state / pulse 相关模式</li>
+<li>生成 <code>SIOStdStreamWrite</code>、<code>SIOStdStreamLineIter</code>、<code>SIOStdStreamPull</code></li>
+<li>为 iterator / stream zip / snapshot / instant pull 建 IR</li>
+<li>决定某些 match 的 IR 形态</li>
+</ul>
+<p>也就是说，很多“语言行为现在到底怎么落”的答案，其实不在 parser，而在 <code>ToStyioIR.cpp</code>。</p>
+<h2 id="当前关键-lowering-例子">当前关键 lowering 例子</h2>
+<h3 id="标准流写">标准流写</h3>
+<p><code>ResourceWriteAST</code> / <code>ResourceRedirectAST</code> 会被 lowering 成：</p>
+<ul>
+<li><code>SIOStdStreamWrite</code></li>
+<li>或 <code>SGResourceWriteToFile</code></li>
+</ul>
+<h3 id="stdin-迭代">stdin 迭代</h3>
+<p><code>@stdin &gt;&gt; #(line) =&gt; {...}</code> 会落成：</p>
+<ul>
+<li><code>SIOStdStreamLineIter</code></li>
+</ul>
+<h3 id="stdin-instant-pull">stdin instant pull</h3>
+<p><code>(&lt;&lt; @stdin)</code> 会落成：</p>
+<ul>
+<li><code>SIOStdStreamPull</code></li>
+</ul>
+<h2 id="改-analyzer-时的最低同步范围">改 analyzer 时的最低同步范围</h2>
+<h3 id="新-ast-节点">新 AST 节点</h3>
+<ul>
+<li><code>ASTAnalyzer.hpp</code></li>
+<li><code>TypeInfer.cpp</code></li>
+<li><code>ToStyioIR.cpp</code></li>
+<li><code>StyioIR</code> 新节点定义</li>
+<li>对应 <code>ToStringVisitor</code></li>
+</ul>
+<h3 id="新语义约束">新语义约束</h3>
+<p>不要只改 <code>TypeInfer.cpp</code> 的局部报错，还要看：</p>
+<ul>
+<li>是否影响 lowering 分支</li>
+<li>是否影响 milestone 语义错误用例</li>
+<li>是否要补 <code>Symbol-Reference</code> / <code>Language-Design</code></li>
+</ul>
+<h3 id="新-ir-节点">新 IR 节点</h3>
+<p>至少同步：</p>
+<ul>
+<li><code>IRDecl.hpp</code></li>
+<li><code>GenIR.hpp</code> 或 <code>IOIR.hpp</code></li>
+<li><code>ASTAnalyzer.hpp</code></li>
+<li><code>ToStyioIR.cpp</code></li>
+<li><code>CodeGenVisitor.hpp</code></li>
+<li>具体 codegen 文件</li>
+</ul>
+<h2 id="维护原则">维护原则</h2>
+<ul>
+<li>把语法问题留给 parser</li>
+<li>把执行问题留给 codegen/runtime</li>
+<li>analyzer 负责把“语法上能写”收束成“语义上可执行”</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="parser-manual.html" class="navigation navigation-prev " aria-label="Previous page: Parser 手册">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="codegen-manual.html" class="navigation navigation-next " aria-label="Next page: CodeGen 手册">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Analyzer 手册","level":"13.3","depth":1,"next":{"title":"CodeGen 手册","level":"13.4","depth":1,"path":"interfaces/codegen-manual.md","ref":"interfaces/codegen-manual.md","articles":[]},"previous":{"title":"Parser 手册","level":"13.2","depth":1,"path":"interfaces/parser-manual.md","ref":"interfaces/parser-manual.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"interfaces/analyzer-manual.md","mtime":"2026-04-22T01:31:06.877Z","type":"markdown"},"gitbook":{"version":"6.1.7","time":"2026-05-13T02:59:35.891Z"},"basePath":"..","book":{"language":"zh"}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
