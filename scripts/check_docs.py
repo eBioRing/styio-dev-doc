@@ -11,6 +11,10 @@ ROOT = Path(__file__).resolve().parent.parent
 BOOK_ROOTS = [ROOT / "zh", ROOT / "en"]
 PROHIBITED_ROOT_FILES = [ROOT / "SUMMARY.md", ROOT / "LANGS.md"]
 MIRRORED_BOOK_ROOTS = (ROOT / "zh", ROOT / "en")
+GITBOOK_CONFIG_NAME = ".gitbook.yaml"
+GITBOOK_CONFIG_FILENAMES = {GITBOOK_CONFIG_NAME, ".gitbook.yml", "gitbook.yaml", "gitbook.yml"}
+EXPECTED_GITBOOK_CONFIGS = {book_root / GITBOOK_CONFIG_NAME for book_root in BOOK_ROOTS}
+IGNORED_SCAN_PARTS = {".git", "_book", ".artifacts"}
 
 LINK_RE = re.compile(r"!?\[[^\]]+\]\(([^)]+)\)")
 FENCED_CODE_RE = re.compile(r"```.*?```", re.DOTALL)
@@ -127,6 +131,124 @@ def check_mirrored_markdown_paths(left: Path, right: Path) -> list[str]:
     return errors
 
 
+def strip_optional_quotes(value: str) -> str:
+    value = value.strip()
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+        return value[1:-1]
+    return value
+
+
+def normalize_config_path(value: str) -> str:
+    value = strip_optional_quotes(value).strip()
+    while value.startswith("./"):
+        value = value[2:]
+    if value in {"", "."}:
+        return "."
+    return value.rstrip("/")
+
+
+def parse_simple_gitbook_yaml(path: Path) -> tuple[dict[str, object], list[str]]:
+    config: dict[str, object] = {}
+    errors: list[str] = []
+    current_section: str | None = None
+
+    for line_no, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        if not raw.strip() or raw.lstrip().startswith("#"):
+            continue
+
+        indent_text = raw[: len(raw) - len(raw.lstrip(" "))]
+        if "\t" in indent_text:
+            errors.append(f"{relative_to(path, ROOT)}:{line_no} uses tabs for indentation")
+            continue
+
+        line = raw.split("#", 1)[0].rstrip()
+        indent = len(line) - len(line.lstrip(" "))
+        content = line.strip()
+
+        if ":" not in content:
+            errors.append(f"{relative_to(path, ROOT)}:{line_no} is not a key/value entry")
+            continue
+
+        key, raw_value = content.split(":", 1)
+        key = key.strip()
+        value = raw_value.strip()
+
+        if indent == 0:
+            if value:
+                config[key] = strip_optional_quotes(value)
+                current_section = None
+            else:
+                config[key] = {}
+                current_section = key
+            continue
+
+        if indent == 2 and current_section:
+            section = config.get(current_section)
+            if not isinstance(section, dict):
+                errors.append(f"{relative_to(path, ROOT)}:{line_no} cannot add nested value under {current_section}")
+                continue
+            section[key] = strip_optional_quotes(value)
+            continue
+
+        errors.append(f"{relative_to(path, ROOT)}:{line_no} has unsupported indentation")
+
+    return config, errors
+
+
+def gitbook_config_files() -> list[Path]:
+    files: list[Path] = []
+    for path in ROOT.rglob("*"):
+        if not path.is_file() or path.name not in GITBOOK_CONFIG_FILENAMES:
+            continue
+        if any(part in IGNORED_SCAN_PARTS for part in path.parts):
+            continue
+        files.append(path)
+    return files
+
+
+def check_gitbook_configs() -> list[str]:
+    errors: list[str] = []
+    found = {path.resolve() for path in gitbook_config_files()}
+    expected = {path.resolve() for path in EXPECTED_GITBOOK_CONFIGS}
+
+    for path in sorted(expected - found):
+        errors.append(f"{relative_to(path, ROOT)} is required for the GitBook Project directory")
+
+    for path in sorted(found - expected):
+        if path.name == GITBOOK_CONFIG_NAME:
+            errors.append(
+                f"{relative_to(path, ROOT)} is not allowed; .gitbook.yaml must live directly under zh/ and en/"
+            )
+        else:
+            errors.append(
+                f"{relative_to(path, ROOT)} is not allowed; GitBook configuration must be named .gitbook.yaml"
+            )
+
+    for path in sorted(expected & found):
+        config, parse_errors = parse_simple_gitbook_yaml(path)
+        errors.extend(parse_errors)
+
+        if "root" not in config:
+            errors.append(f"{relative_to(path, ROOT)} must set root: ./")
+        root = normalize_config_path(str(config.get("root", "")))
+        if "root" in config and root != ".":
+            errors.append(f"{relative_to(path, ROOT)} must set root: ./")
+
+        structure = config.get("structure")
+        if not isinstance(structure, dict):
+            errors.append(f"{relative_to(path, ROOT)} must define structure.readme and structure.summary")
+            continue
+
+        readme = normalize_config_path(str(structure.get("readme", "")))
+        summary = normalize_config_path(str(structure.get("summary", "")))
+        if readme != "README.md":
+            errors.append(f"{relative_to(path, ROOT)} must set structure.readme: README.md")
+        if summary != "SUMMARY.md":
+            errors.append(f"{relative_to(path, ROOT)} must set structure.summary: SUMMARY.md")
+
+    return errors
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -144,6 +266,8 @@ def main() -> int:
 
     if all(book_root.is_dir() for book_root in MIRRORED_BOOK_ROOTS):
         errors.extend(check_mirrored_markdown_paths(*MIRRORED_BOOK_ROOTS))
+
+    errors.extend(check_gitbook_configs())
 
     if errors:
         print("Docs gate failed:")
