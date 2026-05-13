@@ -1,0 +1,55 @@
+name: GitBook gate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - ai-dev
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gitbook-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Verify GitBook rendering
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      HOSTED_GITBOOK_URL: https://ebioring.gitbook.io/styio-dev/
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check hosted GitBook URL
+        continue-on-error: true
+        run: |
+          curl --fail --location --silent --show-error --head --max-time 20 "$HOSTED_GITBOOK_URL"
+
+      - name: Run repository GitBook gate
+        run: ./scripts/verify.sh
+
+      - name: Upload browser smoke artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-smoke
+          path: .artifacts/docs-smoke/
+          if-no-files-found: ignore
