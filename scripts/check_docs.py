@@ -61,12 +61,27 @@ def main() -> int:
         p.relative_to(ROOT).as_posix() for p in markdown_files if p not in seen
     )
     if unreachable:
-        print("Unreachable markdown pages:")
+        print("Unreachable markdown pages (not in README.md or SUMMARY.md):")
         for item in unreachable:
             print(item)
         return 1
 
-    print(f"OK: {len(markdown_files)} markdown pages are internally linked and reachable.")
+    # New check: Ensure all content files are linked in README.md
+    readme_path = BOOK_ROOT / "README.md"
+    readme_links = set(internal_links(readme_path))
+    content_files = markdown_files - {readme_path.resolve(), (BOOK_ROOT / "SUMMARY.md").resolve()}
+    
+    missing_from_readme = sorted(
+        p.relative_to(ROOT).as_posix() for p in content_files if p not in readme_links
+    )
+    
+    if missing_from_readme:
+        print("Markdown pages missing from en/README.md:")
+        for item in missing_from_readme:
+            print(item)
+        return 1
+
+    print(f"OK: {len(markdown_files)} markdown pages are internally linked, reachable, and indexed in README.md.")
     return 0
 
 

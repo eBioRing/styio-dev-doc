@@ -43,7 +43,7 @@ Extension 应当优先消费：
 - `styio --error-format jsonl`
 - `styio --machine-info=json`
 - 稳定的文件输入 / 输出行为
-- 已发布的 `spio` CLI 或 machine contract
+- 已发布的 `spio` CLI 或 `styio-protocol`
 
 不要依赖：
 
@@ -52,15 +52,15 @@ Extension 应当优先消费：
 - 未文档化的 parser 分支行为
 - 一份自己维护的语法副本来定义真实语言规则
 
-## 和 `styio-view` 的区别
+## 和 `Vityo` 的区别
 
-`styio-view` 是 Styio 自己的产品级 IDE / 运行视窗。
+`Vityo` 是 Styio 自己的产品级 IDE / 运行视窗。
 
 Extension 仓是宿主编辑器里的适配层。它的目标是把现有能力接进 VS Code 或未来别的编辑器，而不是承载整套产品交互和平台执行策略。
 
 因此：
 
-- 产品交互和平台边界优先回 `styio-view`
+- 产品交互和平台边界优先回 `Vityo`
 - 语言、CLI、diagnostics、machine interface 优先回 `styio`
 - 宿主编辑器的命令、设置项、集成方式才回 Extension 仓
 
@@ -92,5 +92,5 @@ Extension 仓是宿主编辑器里的适配层。它的目标是把现有能力�
 
 - [仓库矩阵与来源优先级](repository-matrix.md)
 - [Styio 本体开发流程](styio-core-workflow.md)
-- [styio-view 开发指引](styio-view-development.md)
+- [Vityo 开发指引](vityo-development.md)
 - [CLI 与 Machine Interface 改动手册](../runbooks/cli-and-machine-interface.md)

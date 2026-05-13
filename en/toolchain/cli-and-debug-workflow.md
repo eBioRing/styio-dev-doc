@@ -2,7 +2,7 @@
 
 这页只写 `styio` 本体 CLI 与调试工作流。
 
-维护 Styio 时，CLI 不是给终端用户看的附属品，而是最直接的编译器观测窗口。`styio-spio` 和 `styio-view` 的命令面与调试流程应各看自己的开发指引。
+维护 Styio 时，CLI 不是给终端用户看的附属品，而是最直接的编译器观测窗口。`Spio` 和 `Vityo` 的命令面与调试流程应各看自己的开发指引。
 
 ## 最小运行
 
@@ -76,7 +76,7 @@
 
 ## `styio-nano` 相关现实
 
-当前远端 `main` 已经把 `styio-nano` packaging 命令并进了 full compiler CLI。
+当前远端 `nightly` 已经把 `styio-nano` packaging 命令并进了 full compiler CLI。
 
 要记住这几个边界：
 
