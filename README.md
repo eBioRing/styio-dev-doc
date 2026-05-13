@@ -1,15 +1,20 @@
 # Styio Developer Manual / Styio 维护者手册
 
-Welcome to the Styio ecosystem developer documentation. / 欢迎来到 Styio 生态开发者文档。
+This repository backs two GitBook spaces. Do not sync GitBook from the repository root.
 
-## Language / 语言选择
+## GitBook sync roots
 
-* [简体中文 (Chinese)](zh/README.md)
-* [English](en/README.md)
+| GitBook space | Project directory | Entrypoints |
+| --- | --- | --- |
+| 简体中文 | `zh` | `zh/README.md`, `zh/SUMMARY.md` |
+| English | `en` | `en/README.md`, `en/SUMMARY.md` |
 
----
+## Maintenance
 
-### Maintenance Note / 维护说明
+All GitBook content changes should stay under `zh/` or `en/`. Do not recreate a root `SUMMARY.md`; that mixes both languages into whichever GitBook space syncs the repository root.
 
-This repository is synced with GitBook. All modifications should be made in the `zh/` or `en/` directories.
-本仓库与 GitBook 同步。所有修改应在 `zh/` 或 `en/` 目录下进行。
+Run the full gate before pushing:
+
+```bash
+./scripts/verify.sh
+```
