@@ -1,4 +1,5 @@
-en/**/_book/
+_book/
+**/_book/
 .artifacts/
 .tmp-*.png
 .tmp-doc-server.log
