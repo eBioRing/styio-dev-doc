@@ -1,0 +1,84 @@
+# Table of contents
+
+* [首页](zh/README.md)
+
+## 全局协作与生态矩阵
+
+* [仓库矩阵与来源优先级] (zh/ecosystem/repository-matrix.md)
+* [三仓库协作指南] (zh/ecosystem/three-repository-collaboration.md)
+
+## styio  (zh/编译器与语言)
+
+* [Styio 本体协作指南] (zh/ecosystem/styio-core-workflow.md)
+* [构建工具链] (zh/toolchain/build-toolchain.md)
+* [CLI 与调试工作流] (zh/toolchain/cli-and-debug-workflow.md)
+
+## Spio  (zh/包管理与工作流)
+
+* [Spio 协作指南] (zh/ecosystem/spio-development.md)
+* [Spio 当前能力与边界] (zh/ecosystem/spio-surface.md)
+
+## Vityo  (zh/IDE 与交互)
+
+* [Vityo 协作指南] (zh/ecosystem/vityo-development.md)
+* [Extensions 协作指南] (zh/ecosystem/extensions-development.md)
+
+## styio-audit  (zh/审计与合规)
+
+* [styio-audit 协作指南] (zh/ecosystem/styio-audit-development.md)
+* [审计、许可证与依赖合规] (zh/standards/audit-license-and-dependency-policy.md)
+
+## styio-benchmark  (zh/性能与基准)
+
+* [styio-benchmark 协作指南] (zh/ecosystem/styio-benchmark-development.md)
+
+## styio-platform  (zh/平台与服务)
+
+* [styio-platform 协作指南] (zh/ecosystem/styio-platform-development.md)
+
+## styio-community  (zh/社区与治理)
+
+* [styio-community 社区指南] (zh/ecosystem/styio-community-development.md)
+
+## styio-dev-env  (zh/开发环境)
+
+* [styio-dev-env 用途说明] (zh/ecosystem/styio-dev-env-development.md)
+
+## 规范
+
+* [贡献者协作准则] (zh/standards/contributor-contract.md)
+* [编码与重构规则] (zh/standards/coding-and-refactor-rules.md)
+* [测试与回归策略] (zh/standards/testing-and-regression.md)
+* [文档与 SSOT 规则] (zh/standards/documentation-and-ssot.md)
+
+## 架构
+
+* [分层架构与职责] (zh/architecture/layered-architecture.md)
+* [编译器流水线] (zh/architecture/compiler-pipeline.md)
+* [源码目录地图] (zh/architecture/source-tree.md)
+
+## 接口
+
+* [核心接口总览] (zh/interfaces/core-interfaces.md)
+* [Parser 手册] (zh/interfaces/parser-manual.md)
+* [Analyzer 手册] (zh/interfaces/analyzer-manual.md)
+* [CodeGen 手册] (zh/interfaces/codegen-manual.md)
+* [Runtime 手册] (zh/interfaces/runtime-manual.md)
+* [功能改动矩阵] (zh/interfaces/change-matrix.md)
+
+## 维护任务
+
+* [新 Token 或语法改动手册] (zh/runbooks/new-token-or-syntax.md)
+* [新 AST 或 IR 节点改动手册] (zh/runbooks/new-ast-or-ir.md)
+* [标准流与资源能力改动手册] (zh/runbooks/resources-and-stdio.md)
+* [新增 Intrinsic 改动手册] (zh/runbooks/new-intrinsic.md)
+* [State / Pulse / Snapshot 改动手册] (zh/runbooks/state-and-pulse.md)
+* [诊断与错误模型手册] (zh/runbooks/diagnostics-and-error-model.md)
+* [Parser Shadow 与双轨迁移手册] (zh/runbooks/parser-shadow-and-dual-track.md)
+* [测试金字塔与 Case 选型手册] (zh/runbooks/testing-pyramid-and-case-selection.md)
+* [CLI 与 Machine Interface 改动手册] (zh/runbooks/cli-and-machine-interface.md)
+
+## 语言 SSOT
+
+* [语言与设计 SSOT 地图] (zh/language/ssot-map.md)
+* [资源、`@` 与标准流] (zh/language/resources-and-stdio.md)
