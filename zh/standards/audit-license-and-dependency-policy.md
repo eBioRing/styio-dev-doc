@@ -98,14 +98,14 @@ python3 -m styio_audit.cli secret-history --repo /path/to/repo --project <projec
 常用命令：
 
 ```bash
-cd /home/unka/styio-audit
+cd <styio-workspace>-audit
 python3 -m unittest discover -s tests -v
 python3 -m styio_audit.cli validate-modules
 python3 -m styio_audit.cli gate --repo . --project styio-audit --framework-only
-python3 -m styio_audit.cli gate --repo /home/unka/styio-nightly --project styio --framework-only
-python3 -m styio_audit.cli gate --repo /home/unka/Spio --project Spio --framework-only
-python3 -m styio_audit.cli gate --repo /home/unka/Vityo --project Vityo --framework-only
-python3 -m styio_audit.cli gate --repo /home/unka/styio-platform --project styio-platform --framework-only
+python3 -m styio_audit.cli gate --repo <styio-workspace> --project styio --framework-only
+python3 -m styio_audit.cli gate --repo <spio-workspace> --project Spio --framework-only
+python3 -m styio_audit.cli gate --repo <vityo-workspace> --project Vityo --framework-only
+python3 -m styio_audit.cli gate --repo <styio-platform-workspace> --project styio-platform --framework-only
 ```
 
 项目仓文档门禁通常是：
