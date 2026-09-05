@@ -47,6 +47,7 @@
 ## 规范
 
 * [贡献者协作准则](standards/contributor-contract.md)
+* [AI 辅助与提交签名（组织宪法）](standards/ai-authorship-constitution.md)
 * [编码与重构规则](standards/coding-and-refactor-rules.md)
 * [测试与回归策略](standards/testing-and-regression.md)
 * [文档与 SSOT 规则](standards/documentation-and-ssot.md)

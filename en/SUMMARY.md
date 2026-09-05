@@ -47,6 +47,7 @@
 ## Standards
 
 * [Contributor Collaboration Rules](standards/contributor-contract.md)
+* [AI authorship constitution (org-wide)](standards/ai-authorship-constitution.md)
 * [Coding and Refactoring Rules](standards/coding-and-refactor-rules.md)
 * [Testing and Regression Strategy](standards/testing-and-regression.md)
 * [Documentation and SSOT Rules](standards/documentation-and-ssot.md)
