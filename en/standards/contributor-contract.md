@@ -67,3 +67,5 @@ AI systems cannot be responsible for code, and therefore must not sign code.
 - When a human uses AI to generate or assist with changes, that human must sign and submit the commits under their own identity. AI may produce drafts only; it must not appear as the signed author.
 - Pull requests that still contain AI- or bot-signed commits are drafts: re-author them under a human signature before merge. Do not merge them onto the default branch as-is.
 - This rule applies across managed Styio-ecosystem repositories and does not depend on which AI tool was used.
+
+For the full organization constitution, see [AI Assistance and Commit Signatures (Organization Constitution)](./ai-authorship-constitution.md). This rule binds every SymPolicy repository.
