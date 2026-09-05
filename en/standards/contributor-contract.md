@@ -63,7 +63,7 @@ This helps other developers understand and continue your work.
 
 AI systems cannot be responsible for code, and therefore must not sign code.
 
-- Do not land commits on managed branches whose Git **author** or **committer** is an AI or bot identity (for example, Cursor Agent).
+- Do not land commits on managed branches whose Git **author** or **committer** is an AI or bot identity (for example, Cursor Agent, Claude Code / Claude, Copilot, or similar coding agents).
 - When a human uses AI to generate or assist with changes, that human must sign and submit the commits under their own identity. AI may produce drafts only; it must not appear as the signed author.
 - Pull requests that still contain AI- or bot-signed commits are drafts: re-author them under a human signature before merge. Do not merge them onto the default branch as-is.
 - This rule applies across managed Styio-ecosystem repositories and does not depend on which AI tool was used.

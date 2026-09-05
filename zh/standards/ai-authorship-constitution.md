@@ -7,7 +7,7 @@
 ## 条文
 
 1. **AI 不能为代码负责**，因此 **AI 也不能为代码签名**。
-2. 禁止将 AI / 机器人身份（例如 Cursor Agent）作为 Git commit 的 **author** 或 **committer** 合入受管分支。
+2. 禁止将 AI / 机器人身份（例如 Cursor Agent、Claude Code / Claude、Copilot 及同类编程代理）作为 Git commit 的 **author** 或 **committer** 合入受管分支。
 3. 人类作者使用 AI 生成或协助改动时，必须以**自己的身份**签名并提交；AI 只可作为草稿来源，不得作为署名作者。
 4. 仍含 AI / 机器人签名的 Pull Request 视为**草稿**：须由人类作者重签后再合并；不得直接合并进默认分支。
 5. 本规则与使用哪一家 AI 工具无关；违反本条的合并视为治理违规，应回滚或重签纠正。
